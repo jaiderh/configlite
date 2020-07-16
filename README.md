@@ -17,16 +17,16 @@ Implementación de configuraciones básicas de dispositivos de medición de ener
 La implementación incluye los siguientes métodos
 
 *Creación de un nuevo medidor*
-- **POST** /devices 
+- **POST** /api/devices 
 
 *Listado de medidores registrados*
-- **GET** /devices 
+- **GET** /api/devices 
 
 *Consulta de un medidor por ID*
-- **GET** /devices/{id} 
+- **GET** /api/devices/{id} 
 
 *Actualización de un medidor*
-- **PUT** /devices/{id} 
+- **PUT** /api/devices/{id} 
 
 *Borrado de un medidor por ID*
-- **DELETE** /devices/{id}  
+- **DELETE** /api/devices/{id}  
