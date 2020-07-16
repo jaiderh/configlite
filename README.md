@@ -1,4 +1,4 @@
-# configlite
+# Config Lite
 Implementación de configuraciones básicas de dispositivos de medición de energía y sus entidades básicas Clientes y Puntos de Medida
 
 ## Configuración de Entorno de Desarrollo
@@ -10,3 +10,23 @@ Implementación de configuraciones básicas de dispositivos de medición de ener
   - Flask 1.1.2
   - Flask-SQLAlchemy 2.4.4
   - SQL Alchemy 1.3.18
+
+## Implementación
+
+### Servicio Rest para la Entidad Device ( Medidor )
+La implementación incluye los siguientes métodos
+
+*Creación de un nuevo medidor*
+- **POST** /devices 
+
+*Listado de medidores registrados*
+- **GET** /devices 
+
+*Consulta de un medidor por ID*
+- **GET** /devices/{id} 
+
+*Actualización de un medidor*
+- **PUT** /devices/{id} 
+
+*Borrado de un medidor por ID*
+- **DELETE** /devices/{id}  
