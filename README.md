@@ -32,13 +32,13 @@ La implementación incluye los siguientes métodos
 - **DELETE** /api/devices/{id}  
 
 
-### Servicio Rest para la Entidad Client ( Client )
+### Servicio Rest para la Entidad Client ( Cliente )
 La implementación incluye los siguientes métodos
 
 *Creación de un nuevo cliente*
 - **POST** /api/clients 
 
-*Listado de cliente registrados*
+*Listado de clientes registrados*
 - **GET** /api/clients 
 
 *Consulta de un cliente por ID*
@@ -49,4 +49,23 @@ La implementación incluye los siguientes métodos
 
 *Borrado de un cliente por ID*
 - **DELETE** /api/clients/{id}  
+
+
+### Servicio Rest para la Entidad Socket ( Punto de Medida )
+La implementación incluye los siguientes métodos
+
+*Creación de un nuevo socket*
+- **POST** /api/sockets 
+
+*Listado de sockets registrados*
+- **GET** /api/sockets 
+
+*Consulta de un socket por ID*
+- **GET** /api/sockets/{id} 
+
+*Actualización de un socket*
+- **PUT** /api/sockets/{id} 
+
+*Borrado de un socket por ID*
+- **DELETE** /api/sockets/{id}  
 

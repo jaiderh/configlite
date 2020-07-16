@@ -28,7 +28,10 @@ class Client(db.Model):
             'idclient': self.idclient,
             'description': self.description,
             'city': self.city,
-            'email': self.email
+            'email': self.email,
+            'sockets': [socket.json() for socket in self.sockets.all()],
+            'created_on': self.created_on,
+            'updated_on': self.updated_on
         }
 
     @classmethod

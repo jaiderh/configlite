@@ -31,7 +31,9 @@ class Device(db.Model):
             'brand': self.brand,
             'model': self.model,
             'serial': self.serial,
-            'socket_id': self.socket_id
+            'socket_id': self.socket_id,
+            'created_on': self.created_on,
+            'updated_on': self.updated_on
         }
 
     @classmethod

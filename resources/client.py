@@ -18,7 +18,7 @@ def get_clients():
 def get_client(id):
     client = Client.find_by_id(id)
     if client:
-        return client.json()
+        return client.json(), 200
 
     return {'message': f'No existe cliente con el ID [{id}] especificado'}, 404
 

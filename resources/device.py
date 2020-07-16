@@ -17,7 +17,7 @@ def get_devices():
 def get_device(id):
     device = Device.find_by_id(id)
     if device:
-        return device.json()
+        return device.json(), 200
 
     return {'message': f'No existe medidor con el ID [{id}] especificado'}, 404
 
