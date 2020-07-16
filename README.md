@@ -30,3 +30,23 @@ La implementación incluye los siguientes métodos
 
 *Borrado de un medidor por ID*
 - **DELETE** /api/devices/{id}  
+
+
+### Servicio Rest para la Entidad Client ( Client )
+La implementación incluye los siguientes métodos
+
+*Creación de un nuevo cliente*
+- **POST** /api/clients 
+
+*Listado de cliente registrados*
+- **GET** /api/clients 
+
+*Consulta de un cliente por ID*
+- **GET** /api/clients/{id} 
+
+*Actualización de un cliente*
+- **PUT** /api/clients/{id} 
+
+*Borrado de un cliente por ID*
+- **DELETE** /api/clients/{id}  
+
