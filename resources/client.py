@@ -1,20 +1,24 @@
 from flask import Blueprint
 from flask import request
+from flask import jsonify
+
+from flask_jwt_extended import jwt_required
 
 from models.device import Device
 from models.socket import Socket
 from models.client import Client
 
-
 client_routes = Blueprint("client_routes", __name__)
 
 
 @client_routes.route('/', methods=['GET'])
+@jwt_required
 def get_clients():
-    return {'clients': [x.json() for x in Client.find_all()]}, 200
+    return jsonify([x.json() for x in Client.find_all()]), 200
 
 
 @client_routes.route('/<int:id>', methods=['GET'])
+@jwt_required
 def get_client(id):
     client = Client.find_by_id(id)
     if client:
@@ -24,6 +28,7 @@ def get_client(id):
 
 
 @client_routes.route('/', methods=['POST'])
+@jwt_required
 def create_client():
     data = request.get_json()
     idclient = data['idclient']
@@ -33,7 +38,7 @@ def create_client():
 
     client = Client(
                     idclient,
-                    data['description'],
+                    data.get('description',''),
                     data['city'],
                     data['email'])
     try:
@@ -45,6 +50,7 @@ def create_client():
 
 
 @client_routes.route('/<int:id>', methods=['PUT'])
+@jwt_required
 def update_client(id):
     data = request.get_json()
     client = Client.find_by_id(id)
@@ -52,7 +58,7 @@ def update_client(id):
     if not client:
         return {'message': f'No se encuentra el client con el ID [{id}] especificado'}, 404
 
-    client.description = data['description']
+    client.description = data.get('description','')
     client.city = data['city']
     client.email = data['email']
 
@@ -65,6 +71,7 @@ def update_client(id):
 
 
 @client_routes.route('/<int:id>', methods=['DELETE'])
+@jwt_required
 def delete_client(id):
 
     client = Client.find_by_id(id)
@@ -74,4 +81,4 @@ def delete_client(id):
 
     client.delete_from_db()
 
-    return {'message': 'Cliente borrado.'}, 200
+    return {'message': 'Cliente borrado exisamente.'}, 200

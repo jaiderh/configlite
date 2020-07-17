@@ -1,5 +1,8 @@
 from flask import Blueprint
 from flask import request
+from flask import jsonify
+
+from flask_jwt_extended import jwt_required
 
 from models.device import Device
 from models.socket import Socket
@@ -9,11 +12,13 @@ device_routes = Blueprint("device_routes", __name__)
 
 
 @device_routes.route('/', methods=['GET'])
+@jwt_required
 def get_devices():
-    return {'devices': [x.json() for x in Device.find_all()]}, 200
+    return jsonify([x.json() for x in Device.find_all()]), 200
 
 
 @device_routes.route('/<int:id>', methods=['GET'])
+@jwt_required
 def get_device(id):
     device = Device.find_by_id(id)
     if device:
@@ -23,6 +28,7 @@ def get_device(id):
 
 
 @device_routes.route('/', methods=['POST'])
+@jwt_required
 def create_device():
     data = request.get_json()
     deviceid = data['deviceid']
@@ -49,6 +55,7 @@ def create_device():
 
 
 @device_routes.route('/<int:id>', methods=['PUT'])
+@jwt_required
 def update_device(id):
     data = request.get_json()
     device = Device.find_by_id(id)
@@ -75,6 +82,7 @@ def update_device(id):
 
 
 @device_routes.route('/<int:id>', methods=['DELETE'])
+@jwt_required
 def delete_device(id):
 
     device = Device.find_by_id(id)
@@ -84,4 +92,4 @@ def delete_device(id):
 
     device.delete_from_db()
 
-    return {'message': 'Medidor borrado.'}, 200
+    return {'message': 'Medidor borrado exitosamente.'}, 200

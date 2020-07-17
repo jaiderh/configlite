@@ -1,5 +1,8 @@
 from flask import Blueprint
 from flask import request
+from flask import jsonify
+
+from flask_jwt_extended import jwt_required
 
 from models.device import Device
 from models.socket import Socket
@@ -9,11 +12,13 @@ socket_routes = Blueprint("socket_routes", __name__)
 
 
 @socket_routes.route('/', methods=['GET'])
+@jwt_required
 def get_sockets():
-    return {'sockets': [x.json() for x in Socket.find_all()]}, 200
+    return jsonify([x.json() for x in Socket.find_all()]), 200
 
 
 @socket_routes.route('/<int:id>', methods=['GET'])
+@jwt_required
 def get_socket(id):
     socket = Socket.find_by_id(id)
     if socket:
@@ -23,6 +28,7 @@ def get_socket(id):
 
 
 @socket_routes.route('/', methods=['POST'])
+@jwt_required
 def create_socket():
     data = request.get_json()
     socketid = data['socketid']
@@ -47,6 +53,7 @@ def create_socket():
 
 
 @socket_routes.route('/<int:id>', methods=['PUT'])
+@jwt_required
 def update_socket(id):
     data = request.get_json()
     socket = Socket.find_by_id(id)
@@ -71,6 +78,7 @@ def update_socket(id):
 
 
 @socket_routes.route('/<int:id>', methods=['DELETE'])
+@jwt_required
 def delete_socket(id):
 
     socket = Socket.find_by_id(id)
@@ -80,4 +88,4 @@ def delete_socket(id):
 
     socket.delete_from_db()
 
-    return {'message': 'Socket borrado.'}, 200
+    return {'message': 'Socket borrado exitosamente.'}, 200
