@@ -8,10 +8,16 @@ Implementación de configuraciones básicas de dispositivos de medición de ener
 - Postgres 12.3 sobre Docker 
 - Librerías
   - Flask 1.1.2
+  - Flask-Cors 3.0.8
+  - Flask-JWT-Extended 3.24.1
   - Flask-SQLAlchemy 2.4.4
   - SQL Alchemy 1.3.18
 
-## Implementación
+## Implementación FrontEnd Angular
+
+Para detalles del repositorio del FronEnd en Angular, vea [Config Lite Front](https://github.com/jaiderh/configlitefront.git)
+
+## Implementación Backend Python
 
 ### Servicio Rest para la Entidad Device ( Medidor )
 La implementación incluye los siguientes métodos
